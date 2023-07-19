@@ -79,6 +79,9 @@ body{
     border-radius: 30px;
 }
 
+.search-bar:focus{
+    border: 3px solid grey;
+}
 
 .search-btn{
     width: 15%;
@@ -149,6 +152,11 @@ body{
     background:#212121;
     padding-right: 10px;
 }
+.side-bar a:hover{
+    background-color: #f0f0f0;
+    color:black;
+
+}
 
 .links{
     display: block;
@@ -217,6 +225,11 @@ body{
 .filter-options.active{
     color: #fff;
     background: #242424;
+}
+.filter button:hover{
+    color:black;
+    background-color:white;
+
 }
 
 

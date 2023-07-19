@@ -1,57 +1,11 @@
 
 
-// const baseurl = "https://www.googleapis.com/youtube/v3";
-// const apiKey = "";
 
-
-
-// async function getVideos(q){
-//   const url = `${baseurl}/search?key=${apiKey}&q=${q}&maxResults=20`;
-//   const response = await fetch(url)
-//   const data = await response.json();
-//   const videos = data.items;
-//   console.log(videos)
-// }
-// async function getvedioDetails(videoId){
-//     const url = `${baseurl} /videos?part=snippet,contentDetails,statistics&id=video_id&key={apiKey}`;
-//     const response = await fetch(url)
-//     const data = await response.json();
-//     console.log(data)
-// }
- 
-// getVideos("");
-// getvedioDetails("")
-
-// const baseurl = "https://www.googleapis.com/youtube/v3";
-// const apiKey = "AIzaSyA23bUjUYTSyOhERLMhjvQ6ZNqh-kbL0OU"; // Replace with your actual API key
-
-// async function getVideos(q) {
-//   const url = `${baseurl}/search?key=${apiKey}&q=${q}&maxResults=20`;
-//   const response = await fetch(url);
-//   const data = await response.json();
-//   const videos = data.items;
-//   console.log( "gettvideos",videos);
-// }
-
-// async function getVideoData(videos){
-//     let VideoData = [];
-//     for(let i=0;i<videos.length;i++){
-//       VideoData,push()
-//     }
-// }
-
-// async function getVideoDetails(videoId) {
-//   const url = `${baseurl}/videos?part=snippet,contentDetails,statistics&id=${videoId}&key=${apiKey}`;
-//   const response = await fetch(url);
-//   const data = await response.json();
-//   console.log("getvideodetaial",data);
-// }
-
-// getVideos("cats");
-// getVideoDetails("QZHVhDjpEkE");
 
 
 const videoCardContainer = document.querySelector('.video-container');
+
+
 let api_key = "AIzaSyBpb6W1R0uKCBMyRGVLmaPDATqdJRcr6-A";
 let video_http = "https://www.googleapis.com/youtube/v3/videos?";
 let channel_http = "https://www.googleapis.com/youtube/v3/channels?";
@@ -70,6 +24,8 @@ fetch(video_http + new URLSearchParams({
     })
 })
 .catch(err => console.log(err));
+
+//getting channel icon
 const getChannelIcon = (video_data) => {
     fetch(channel_http + new URLSearchParams({
         key: api_key,
@@ -78,11 +34,17 @@ const getChannelIcon = (video_data) => {
     }))
     .then(res => res.json())
     .then(data => {
+        // console.log(data)
         video_data.channelThumbnail = data.items[0].snippet.thumbnails.default.url;
         makeVideoCard(video_data);
     })
 }
+
+//making videos for dat
+
+
 const makeVideoCard = (data) => {
+    console.log(data)
     videoCardContainer.innerHTML += `
     <div class="video" onclick="location.href = 'https://youtube.com/watch?v=${data.id}'">
         <img src="${data.snippet.thumbnails.high.url}" class="thumbnail" alt="">
